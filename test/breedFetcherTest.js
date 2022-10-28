@@ -11,7 +11,14 @@ describe('fetchBreedDescription', () => {
 
       // compare returned description
       assert.equal(expectedDesc, desc.trim());
+      done();
+    });
+  });
+  it('should return an error message if no cat breed is entered.', (done) => {
+    fetchBreedDescription('', (err, desc) => {
 
+      const errMsg = "That breed doesn't exist in the API. Please try again.";
+      assert.equal(errMsg, err);
       done();
     });
   });
